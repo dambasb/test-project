@@ -11,14 +11,12 @@ import { AppComponent } from './app.component';
 import { VehicleListComponent } from './components/vehicle/vehicle-list/vehicle-list.component';
 import { VehicleEditComponent } from './components/vehicle/vehicle-edit/vehicle-edit.component';
 import { from } from 'rxjs';
-import { VehicleTableComponent } from './components/vehicle/vehicle-list/vehicle-table/vehicle-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VehicleListComponent,
-    VehicleEditComponent,
-    VehicleTableComponent
+    VehicleEditComponent    
   ],
   imports: [
     BrowserModule,
