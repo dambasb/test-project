@@ -1,40 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { Vehicle } from '../../../common/mock-vehicle/vehicle';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { VehicleService } from '../../../common/services/vehicle.service';
 
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
-import { Observable } from 'rxjs';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-vehicle-list',
   templateUrl: './vehicle-list.component.html',
   styleUrls: ['./vehicle-list.component.scss']
 })
+
 export class VehicleListComponent implements OnInit {
 
-  dataSource = new VehicleTableDataSource(this.vehicleService);
-  displayedColumns = ['id', 'name', 'model', 'weight', 'color'];
+  constructor(private vehicleService: VehicleService) { } 
 
-  constructor(private vehicleService: VehicleService) { }
+  dataSource: MatTableDataSource<any>;
+  displayedColumns: string[] = ['id', 'name', 'model', 'weight', 'color'];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  searchKey: string;
 
+  
   ngOnInit() {
-   
+    this.vehicleService.getVehicles().subscribe(
+      list => {
+        let array = list.map(item => item);
+        this.dataSource = new MatTableDataSource(array);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        
+      }
+    );
   }
 
-
-}
-
-export class VehicleTableDataSource extends DataSource<any> {
-
-  constructor(private vehicleService: VehicleService) {
-    super();
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-  connect(): Observable<Vehicle[]> {
-    return this.vehicleService.getVehicles();
-  }
-
-  disconnect() { }
 
 }

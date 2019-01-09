@@ -48,7 +48,7 @@ export const VEHICLES: Vehicle[] = [
         name: 'Kia',
         model: 'Rio',
         weight: '550kg',
-        color: 'white'
+        color: 'yellow'
     },
     {
         id: 7,
@@ -69,7 +69,7 @@ export const VEHICLES: Vehicle[] = [
         name: 'Lada',
         model: '100',
         weight: '450kg',
-        color: 'white'
+        color: 'yellow'
     },
     {
         id: 10,
@@ -118,7 +118,7 @@ export const VEHICLES: Vehicle[] = [
         name: 'Kia',
         model: 'Rio',
         weight: '550kg',
-        color: 'white'
+        color: 'yellow'
     },
     {
         id: 17,
@@ -139,6 +139,6 @@ export const VEHICLES: Vehicle[] = [
         name: 'Lada',
         model: '100',
         weight: '450kg',
-        color: 'white'
+        color: 'yellow'
     }
 ];

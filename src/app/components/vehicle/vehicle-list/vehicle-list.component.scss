@@ -1,5 +1,7 @@
-.full-width-table {
-    width: 80%;
-    margin: 20px auto;
-  }
-  
+.full-width-table, .mat-form-field {
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
